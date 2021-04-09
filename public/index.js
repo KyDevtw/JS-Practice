@@ -51,7 +51,6 @@ twd2usd.addEventListener('click', function () {
   moneyEX.innerText = '新台幣->美金: ' + finalResult
 })
 
-
 // 獲取元件介面物件
 // input
 const bodyHeight = document.getElementById('bodyHeight')
