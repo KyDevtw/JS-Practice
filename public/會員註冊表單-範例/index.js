@@ -15,14 +15,16 @@ register.addEventListener('click', function () {
 
   // 檢查欄位是否有填寫
   // trim()為去除頭尾空白
-  // if (fullname.value.trim() === '')
-  // !反轉布林值
+  //if (fullname.value === '')
   if (!fullname.value.trim()) {
-    error += ' 姓名沒填 '
+    document.getElementById('error-fullname').style.display = 'block'
+    //把文字提示塞入表單後端
   }
 
   if (!address.value.trim()) {
-    error += ' 住址沒填 '
+    return alert(' 住址沒填 ')
+    // return會終止程式運行,也可以回傳空值只負責終止程式
+    // return可以回傳值也可以回傳一段表達式
   }
 
   if (!username.value.trim()) {
@@ -52,3 +54,5 @@ register.addEventListener('click', function () {
   //   message.innerHTML = error
   // } else {
   //   message.innerHTML = '表單驗証通過'
+  // }
+})
