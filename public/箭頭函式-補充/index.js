@@ -4,7 +4,6 @@ function addOuter(a, b) {
   }
 }
 
-
 // function expression
 const addOuter1 = function (a, b) {
   return function () {
@@ -13,7 +12,8 @@ const addOuter1 = function (a, b) {
 }
 
 // 肥箭頭左邊拿掉function,右邊直接寫入函釋內容,不加{}表示帶有return
-const addOuter2 =  (a, b) => function () {
+const addOuter2 = (a, b) =>
+  function () {
     return a + b
   }
 // fucntion可以再簡寫成arrow function
