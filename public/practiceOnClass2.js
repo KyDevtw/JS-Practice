@@ -47,7 +47,7 @@ register.addEventListener('click', function () {
 
   // 呈現錯誤欄位訊息在message
   message.innerHTML = error ? error : '表單驗証通過'
-
+}
   // if (error) {
   //   message.innerHTML = error
   // } else {
