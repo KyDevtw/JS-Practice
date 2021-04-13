@@ -1,8 +1,11 @@
-// 取得介面
+// select
 const year = document.getElementById('year')
 const month = document.getElementById('month')
 const date = document.getElementById('date')
-const register = document.getElementById('register')
+// button
+const checkAge = document.getElementById('checkAge')
+// h3
+const message = document.getElementById('message')
 
 // 選擇的值
 let selectedYear = 0 //相當於請選擇
@@ -21,6 +24,19 @@ function createOptions(min, max) {
   return options
 }
 
+// 使用map的同樣範例
+function createOptionsMap(min, max) {
+  const numbers = []
+  for (let i = min; i < max + 1; i++) {
+    numbers.push(i)
+  }
+
+  return (
+    '<option value="0">請選擇</option>' +
+    numbers.map((v) => `<option value="${v}">${v}</option>`).join('')
+  )
+}
+
 // 呈現字串
 year.innerHTML = createOptions(1920, 2020)
 month.innerHTML = createOptions(1, 12)
@@ -28,7 +44,6 @@ date.innerHTML = createOptions(1, 31)
 
 year.addEventListener('change', function () {
   selectedYear = +year.value
-  console.log(selectedYear, selectedMonth, selectedDate)
 
   // 年 月同時存在才要改變日期
   if (selectedMonth && selectedYear) {
@@ -47,11 +62,10 @@ year.addEventListener('change', function () {
 
 month.addEventListener('change', function () {
   selectedMonth = +month.value
-  console.log(selectedYear, selectedMonth, selectedDate)
 
   // 年 月同時存在才要改變日期
   if (selectedMonth && selectedYear) {
-    // new Date得到當月有幾天
+    // 得到當月有幾天
     const maxDays = new Date(selectedYear, selectedMonth, 0).getDate()
 
     // 重新更動日期最大選項
@@ -66,15 +80,20 @@ month.addEventListener('change', function () {
 
 date.addEventListener('change', function () {
   selectedDate = +date.value
-  console.log(selectedDate)
 })
 
-// 以上為日期選擇動態產生\
-// 以下判斷是否滿18
+// 計算幾歲公式
+// https://stackoverflow.com/a/15555947
+function calcAge(dateString) {
+  const birthday = +new Date(dateString)
+  return ~~((Date.now() - birthday) / 31557600000)
+}
 
-
-register.addEventListener('click', function () {
+checkAge.addEventListener('click', function () {
   const now = new Date()
+
+  // 計算幾歲 測試
+  console.log(calcAge(`${selectedYear}/${selectedMonth}/${selectedDate}`))
 
   const nowY = now.getFullYear()
   const nowM = now.getMonth() + 1 // 注意回傳為 0~11
@@ -82,7 +101,6 @@ register.addEventListener('click', function () {
 
   console.log(nowY, nowM, nowD)
   console.log(selectedYear, selectedMonth, selectedDate)
-  // 上兩行是到console確認回傳的值是否正確
 
   // 布林值代表有沒有超過18歲，超過18歲則為true
   let isOver18 = false
