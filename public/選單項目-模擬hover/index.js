@@ -2,7 +2,8 @@ const menuItems = document.getElementsByClassName('menu-item')
 
 for (let i = 0; i < menuItems.length; i++) {
   // .classList.add(classname)新增class屬性
-  // childNodes是往子層作用
+  // childNodes是往子節點作用數字表示第幾個
+  // menuItems被一個一個抓出來掛事件監聽器
   menuItems[i].addEventListener('mouseenter', function (event) {
     event.target.childNodes[1].classList.add('enter')
 

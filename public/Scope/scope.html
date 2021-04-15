@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scope</title>
+  </head>
+  <body>
+    <script>
+      // 全域變數
+      var a = 10;
+
+      function abc() {
+        // 區域變數
+        // 如果第一層區域沒宣告就自動生成一個全域變數
+         a = 15;
+        a--;
+        console.log("ABC'S A", a);
+
+        function def() {
+          // def()作用域
+          // 如果沒有宣告變數會往上,都沒偶就在痊癒生成痊癒變數
+          a--;
+          console.log("DEF'S A", a);
+        }
+        def();
+        console.log("ABC'S A", a);
+      }
+
+      abc();
+      console.log("outside", a);
+    </script>
+  </body>
+</html>
