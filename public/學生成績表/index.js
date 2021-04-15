@@ -34,9 +34,14 @@ for (let i = 1; i < rowDataArray.length; i++) {
   //會分行的原因是因為前面就已經把每個同學的資料切成array中的array
   for (let j = 0; j < rows.length; j++) {
     bodyDisplay += `<td>${rows[j]}</td>`
+    // bodyDiplsy = '<tr><td>陳小花</td>'
+    // bodyDiplsy = '<tr><td>陳小花</td><td>90</td>'
+    // bodyDiplsy = '<tr><td>陳小花</td><td>90</td><td>65</td>'
+    // bodyDiplsy = '<tr><td>陳小花</td><td>90</td><td>90</td><td>77</td>'
   }
 
   bodyDisplay += `</tr>`
+  // bodyDiplsy = '<tr><td>陳小花</td><td>90</td><td>90</td><td>77</td></tr>'
 }
 
 dataTable.innerHTML += `<tbody>${bodyDisplay}</tbody>`
